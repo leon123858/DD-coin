@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { Layout, theme } from 'antd';
+import './index.css';
+import { Header } from './components/Header';
 
-function App() {
-  const [count, setCount] = useState(0)
+const { Content, Footer } = Layout;
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const App: React.FC = () => {
+	const {
+		token: { colorBgContainer },
+	} = theme.useToken();
 
-export default App
+	return (
+		<Layout>
+			<Header></Header>
+			<br></br>
+			<Content className='site-layout' style={{ padding: '0 50px' }}>
+				<div
+					style={{ padding: 24, minHeight: 380, background: colorBgContainer }}
+				>
+					Content
+				</div>
+			</Content>
+			<Footer style={{ textAlign: 'center' }}>
+				DDC ©2023 Created by Leon Lin
+			</Footer>
+		</Layout>
+	);
+};
+
+export default App;

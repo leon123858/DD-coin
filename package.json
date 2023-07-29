@@ -1,5 +1,23 @@
 {
-  "dependencies": {
-    "firebase": "^10.1.0"
-  }
+	"name": "dd-coin",
+	"description": "DDC",
+	"version": "1.0.0",
+	"main": "index.js",
+	"dependencies": {
+		"firebase": "^10.1.0"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"test": "yarn test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/leon123858/DD-coin.git"
+	},
+	"author": "Leon Lin",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/leon123858/DD-coin/issues"
+	},
+	"homepage": "https://github.com/leon123858/DD-coin#readme"
 }

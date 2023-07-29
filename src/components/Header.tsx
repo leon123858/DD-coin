@@ -1,13 +1,14 @@
 import { Layout, Button, Dropdown, Avatar } from 'antd';
 import { login, logout } from '../utils/auth';
 import { UserOutlined } from '@ant-design/icons';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Context } from './Context';
 
 const { Header: _Header } = Layout;
 
 export const Header = () => {
 	const { isLogin, photo, name, uid } = useContext(Context);
+	const [isDropdownOpen, setDropdownOpen] = useState(false);
 
 	return (
 		<_Header
@@ -24,9 +25,10 @@ export const Header = () => {
 			<h1 style={{ color: 'white' }}>DDC</h1>
 			<div style={{ display: 'flex' }}>
 				<Dropdown
-					trigger={['click']}
+					// trigger={['click']}
 					placement='bottomRight'
 					arrow
+					open={isDropdownOpen}
 					dropdownRender={() => (
 						<div
 							style={{
@@ -41,7 +43,10 @@ export const Header = () => {
 								<>
 									<Button
 										style={{ width: '100%' }}
-										onClick={async () => await login()}
+										onClick={async () => {
+											setDropdownOpen(false);
+											await login();
+										}}
 									>
 										login
 									</Button>
@@ -52,7 +57,10 @@ export const Header = () => {
 									<p>id: {uid}</p>
 									<Button
 										style={{ width: '100%' }}
-										onClick={async () => await logout()}
+										onClick={async () => {
+											setDropdownOpen(false);
+											await logout();
+										}}
 									>
 										logout
 									</Button>
@@ -65,6 +73,9 @@ export const Header = () => {
 						style={{ backgroundColor: '#87d068' }}
 						size={'large'}
 						src={isLogin ? photo || <UserOutlined /> : <UserOutlined />}
+						onClick={() => {
+							setDropdownOpen(!isDropdownOpen);
+						}}
 					/>
 				</Dropdown>
 			</div>

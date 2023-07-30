@@ -1,20 +1,23 @@
+export interface Owner {
+	id: string;
+	publicKey: string;
+}
+
+export interface Creator {
+	name: string;
+	id: string;
+}
+
 export interface Coin {
 	info: {
 		index: number;
 		name: string;
-		creator: {
-			name: string;
-			id: string;
-		};
+		creator: Creator;
 		url: string;
 	};
-	preOwner: {
-		id: string;
-		publicKey: string;
-	};
 	owner: {
-		id: string;
-		publicKey: string;
+		preOwner: Owner;
+		curOwner: Owner;
 	};
 	sign: string;
 }
